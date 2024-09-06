@@ -5,7 +5,7 @@ function Modal({ isOpen, onClose, children }) {
 
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => setIsVisible(true), 100); // Késleltetett megjelenítés
+      setTimeout(() => setIsVisible(true), 100);
     } else {
       setIsVisible(false);
     }
