@@ -8,7 +8,7 @@
 * [Setup & Start](#setup)
 * [State](#state)
 * [Routes](#routes)
-* [To test](#to-test)
+* [To Test](#to-test)
 * [Directory Structure](#directory-structure)
 * [Deploy](#deploy)
 * [Created](#created)
@@ -20,7 +20,7 @@ A weather forecast web application built with React, Vite.js, and Tailwind CSS t
 
 ## Description <a id="description"></a>
 
-This application uses the **Open Meteo API** to fetch weather data based on a selected city. Users can select cities using the geocoding API, view the current weather conditions, and explore a 7-day weather forecast. The app also includes a temperature trend chart.
+This application uses the **Open Meteo API** to fetch weather data based on a selected city. Users can select cities using the geocoding API, view the current weather conditions, and explore a 7-day weather forecast. The app also includes a temperature trend chart. Cypress is used for automated responsive testing.
 
 ## Screenshot <a id="screenshot"></a>
 
@@ -33,6 +33,7 @@ This application uses the **Open Meteo API** to fetch weather data based on a se
 * Vite.js - Build tool
 * Tailwind CSS - Styling
 * Open Meteo API - Weather and geocoding API
+* Cypress - End-to-End testing framework for responsive design
 
 ## Setup & Start <a id="setup"></a>
 
@@ -78,31 +79,58 @@ The application's state is managed with React's `useState` and `useEffect` hooks
 
 ## To Test <a id="to-test"></a>
 
-1. Select a city using the search bar.
-2. View the current weather for the city.
-3. Explore the 7-day weather forecast and view the temperature chart.
+Cypress is used for automated responsive testing. The tests simulate different screen sizes, such as mobile and desktop views, to ensure the application is properly responsive.
+
+### Run Cypress tests:
+
+1. Install Cypress:
+
+    ```sh
+    npm install cypress --save-dev
+    ```
+
+2. Run the Cypress test runner:
+
+    ```sh
+    npx cypress open
+    ```
+
+3. Cypress will open a test interface. Select the **responsive.cy.js** test file located in the **`cypress/e2e/`** folder to test the responsiveness of the application.
+
+    Alternatively, to run tests in headless mode, use:
+
+    ```sh
+    npx cypress run
+    ```
 
 ## Directory Structure <a id="directory-structure"></a>
 
 ```plaintext
 /weather-forecast
+├── cypress
+│   ├── e2e
+│   │   └── responsive.cy.js         # Cypress tests for responsive design
+│   ├── fixtures
+│   ├── support
 ├── public
 │   ├── favicon.ico
 │   └── index.html
 ├── src
 │   ├── assets
-│   │   ├──
-│   │   └──
+│   │   └── SVG files...
 │   ├── components
-│   │   ├── CitySelector.jsx
+│   │   ├── CitySelector
+│   │   │   ├── CitySelector.jsx
+│   │   │   └── CitySelector.test.jsx
 │   │   ├── CurrentWeather.jsx
+│   │   ├── WeatherForecast.jsx
 │   │   ├── TemperatureChart.jsx
-│   │   └── WeatherForecast.jsx
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
 ├── .gitignore
 ├── package.json
+├── cypress.config.js
 ├── postcss.config.js
 ├── tailwind.config.js
 └── vite.config.js
