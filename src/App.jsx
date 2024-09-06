@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CitySelector from './components/CitySelector/CitySelector';
 import Modal from './components/Modal/Modal';
 import SelectedCity from './components/SelectedCity/SelectedCity';
+import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 
 function App() {
   const [selectedCity, setSelectedCity] = useState(null);
@@ -29,6 +30,7 @@ function App() {
       </header>
       <main className="flex-1 w-full max-w-4xl p-6">
         <SelectedCity city={selectedCity} onCityClick={() => setIsModalOpen(true)} />
+        {selectedCity && <CurrentWeather city={selectedCity} />}
       </main>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <CitySelector onSelectCity={handleCitySelect} />
