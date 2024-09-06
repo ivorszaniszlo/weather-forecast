@@ -10,6 +10,7 @@
 * [Routes](#routes)
 * [To Test](#to-test)
 * [Directory Structure](#directory-structure)
+* [Documentation](#documentation)
 * [Deploy](#deploy)
 * [Created](#created)
 * [License](#license)
@@ -128,12 +129,13 @@ Cypress is used for automated responsive testing. The tests simulate different s
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
-├── .gitignore
+├── doc
+│   ├── specification.md         # Project specifications in Hungarian
+│   ├── specification-en.md      # Project specifications in English
 ├── package.json
-├── cypress.config.js
-├── postcss.config.js
-├── tailwind.config.js
+├── README.md
 └── vite.config.js
+
 ```
 
 ## Deploy <a id="deploy"></a>
