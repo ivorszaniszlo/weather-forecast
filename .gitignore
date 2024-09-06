@@ -7,18 +7,73 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Dependency directories
+node_modules/
+.pnpm/
+jspm_packages/
 
-# Editor directories and files
+# Production
+dist/
+dist-ssr/
+out/
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Misc
+*.local
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.iml
+
+# IDE and editor files
+*.swp
+*.swo
+*.lock
+*.bak
+*.tmp
+
+# Tailwind specific cache files
+tailwind.config.js
+tailwind.config.ts
+postcss.config.js
+
+# Build files
+build/
+.cache/
+
+# Coverage directory used by testing tools
+coverage/
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Berry
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Parcel files
+.cache/
+
+# macOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
