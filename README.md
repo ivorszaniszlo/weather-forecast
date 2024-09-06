@@ -124,6 +124,8 @@ Cypress is used for automated responsive testing. The tests simulate different s
 │   │   │   └── CitySelector.jsx
 │   │   ├── CurrentWeather
 │   │   │   └── CurrentWeather.jsx
+│   │   ├── Layout
+│   │   │   └── Layout.jsx
 │   │   ├── Modal
 │   │   │   └── Modal.jsx
 │   │   ├── SearchInput
