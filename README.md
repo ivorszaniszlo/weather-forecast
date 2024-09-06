@@ -9,6 +9,7 @@
 * [State](#state)
 * [Routes](#routes)
 * [To test](#to-test)
+* [Directory Structure](#directory-structure)
 * [Deploy](#deploy)
 * [Created](#created)
 * [License](#license)
@@ -80,6 +81,32 @@ The application's state is managed with React's `useState` and `useEffect` hooks
 1. Select a city using the search bar.
 2. View the current weather for the city.
 3. Explore the 7-day weather forecast and view the temperature chart.
+
+## Directory Structure <a id="directory-structure"></a>
+
+```plaintext
+/weather-forecast
+├── public
+│   ├── favicon.ico
+│   └── index.html
+├── src
+│   ├── assets
+│   │   ├──
+│   │   └──
+│   ├── components
+│   │   ├── CitySelector.jsx
+│   │   ├── CurrentWeather.jsx
+│   │   ├── TemperatureChart.jsx
+│   │   └── WeatherForecast.jsx
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+└── vite.config.js
+```
 
 ## Deploy <a id="deploy"></a>
 
