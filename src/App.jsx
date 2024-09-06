@@ -22,7 +22,7 @@ function App() {
   };
 
   return (
-    <div className="App bg-gray-100 min-h-screen flex flex-col items-center">
+    <div className="App bg-gray-100 min-h-screen flex flex-col items-center font-inter">
       <header className="w-full bg-blue-500 p-4 text-white text-center shadow-md">
         <h1 className="text-2xl md:text-4xl font-bold">Weather Forecast</h1>
       </header>
@@ -30,7 +30,11 @@ function App() {
         {selectedCity ? (
           <p className="text-lg md:text-xl mt-4">Selected City: {selectedCity.name}</p>
         ) : (
-          <button onClick={() => setIsModalOpen(true)} className="p-2 bg-blue-500 text-white rounded">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="p-2 bg-blue-500 text-white rounded"
+            style={{ fontSize: '12px', lineHeight: '14.52px' }}
+          >
             Select City
           </button>
         )}

@@ -15,23 +15,29 @@ function CitySelector({ onSelectCity }) {
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-md w-full md:w-3/4 lg:w-1/2 mx-auto">
+    <div className="bg-gray-100 p-4 shadow-md rounded-md w-full font-inter">
       <input
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Enter city name"
-        className="p-2 border border-gray-300 rounded w-full mb-4"
+        className="p-2 border border-gray-300 rounded w-full mb-4 text-gray-900 bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-300"
+        style={{ fontSize: '12px', lineHeight: '14.52px' }}
       />
-      <button onClick={searchCities} className="p-2 bg-blue-500 text-white rounded w-full md:w-auto">
+      <button
+        onClick={searchCities}
+        className="p-2 bg-blue-600 text-white rounded w-full hover:bg-blue-700 focus:bg-blue-800 transition-colors duration-300"
+        style={{ fontSize: '12px', lineHeight: '14.52px' }}
+      >
         Search
       </button>
       <ul className="mt-4">
-        {cities.map(city => (
+        {cities.map((city) => (
           <li
             key={city.id}
             onClick={() => onSelectCity(city)}
-            className="cursor-pointer hover:bg-gray-100 p-2 border-b"
+            className="cursor-pointer hover:bg-blue-100 p-2 border-b text-gray-800 transition-colors duration-300"
+            style={{ fontSize: '12px', lineHeight: '14.52px' }}
           >
             {city.name}, {city.country}
           </li>
@@ -42,4 +48,3 @@ function CitySelector({ onSelectCity }) {
 }
 
 export default CitySelector;
-
