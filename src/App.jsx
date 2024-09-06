@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CitySelector from './components/CitySelector/CitySelector';
 import Modal from './components/Modal/Modal';
+import SelectedCity from './components/SelectedCity/SelectedCity';
 
 function App() {
   const [selectedCity, setSelectedCity] = useState(null);
@@ -27,17 +28,7 @@ function App() {
         <h1 className="text-2xl md:text-4xl font-bold">Weather Forecast</h1>
       </header>
       <main className="flex-1 w-full max-w-4xl p-6">
-        {selectedCity ? (
-          <p className="text-lg md:text-xl mt-4">Selected City: {selectedCity.name}</p>
-        ) : (
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="p-2 bg-blue-500 text-white rounded"
-            style={{ fontSize: '12px', lineHeight: '14.52px' }}
-          >
-            Select City
-          </button>
-        )}
+        <SelectedCity city={selectedCity} onCityClick={() => setIsModalOpen(true)} />
       </main>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <CitySelector onSelectCity={handleCitySelect} />
