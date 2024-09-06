@@ -82,3 +82,36 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+.current-weather-container {
+  @apply flex flex-col items-center justify-center; /* Középre igazítva mobil nézetben */
+  @apply md:items-start md:justify-start; /* Desktop nézetben balra igazítva */
+  @apply md:absolute md:top-[125px] md:left-[286px]; /* Desktop pozíció */
+  @apply text-white;
+}
+
+.city-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  text-align: center;
+  @apply md:text-left; /* Mobilon középre igazítva, desktopon balra */
+}
+
+.temperature {
+  font-family: 'Inter', sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 58.09px;
+  text-align: center;
+  @apply md:text-left; /* Mobilon középre igazítva, desktopon balra */
+}
+
+.weather-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+  text-align: center;
+  @apply md:text-left; /* Mobilon középre igazítva, desktopon balra */
+}

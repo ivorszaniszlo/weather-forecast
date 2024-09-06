@@ -9,7 +9,7 @@ function SelectedCity({ city, onCityClick }) {
       {city ? (
         <p className="text-lg md:text-xl font-semibold">{city.name}</p>
       ) : (
-        <p className="text-lg md:text-xl font-semibold">Please select a city!</p>
+        <p className="text-lg md:text-xl font-semibold">Válassz ki egy települést!</p>
       )}
     </div>
   );
