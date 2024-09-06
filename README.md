@@ -65,7 +65,7 @@ This application uses the **Open Meteo API** to fetch weather data based on a se
 * Open the app in your browser at:
 
     ```plaintext
-    http://localhost:3000
+    http://localhost:5173
     ```
 
 ## State <a id="state"></a>
@@ -90,7 +90,7 @@ Cypress is used for automated responsive testing. The tests simulate different s
     npm install cypress --save-dev
     ```
 
-2. Run the Cypress test runner:
+2. Open Cypress interactive mode:
 
     ```sh
     npx cypress open
@@ -98,7 +98,7 @@ Cypress is used for automated responsive testing. The tests simulate different s
 
 3. Cypress will open a test interface. Select the **responsive.cy.js** test file located in the **`cypress/e2e/`** folder to test the responsiveness of the application.
 
-    Alternatively, to run tests in headless mode, use:
+4. Alternatively, to run Cypress tests in headless mode, use:
 
     ```sh
     npx cypress run
@@ -121,11 +121,15 @@ Cypress is used for automated responsive testing. The tests simulate different s
 │   │   └── SVG files...
 │   ├── components
 │   │   ├── CitySelector
-│   │   │   ├── CitySelector.jsx
-│   │   │   └── CitySelector.test.jsx
-│   │   ├── CurrentWeather.jsx
-│   │   ├── WeatherForecast.jsx
-│   │   ├── TemperatureChart.jsx
+│   │   │   └── CitySelector.jsx
+│   │   ├── CurrentWeather
+│   │   │   └── CurrentWeather.jsx
+│   │   ├── Modal
+│   │   │   └── Modal.jsx
+│   │   ├── SearchInput
+│   │   │   └── SearchInput.jsx
+│   │   ├── SelectedCity
+│   │   │   └── SelectedCity.jsx
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
