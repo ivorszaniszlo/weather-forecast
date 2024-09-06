@@ -22,10 +22,14 @@ function CurrentWeather({ city }) {
   if (!weatherData) return <p>Loading weather data...</p>;
 
   return (
-    <div className="bg-white p-4 rounded-md shadow-md text-center">
-      <h2 className="text-lg font-semibold">Current Weather in {city.name}</h2>
-      <p className="text-2xl font-bold">{weatherData.temperature}°C</p>
-      <p>{weatherData.weathercode === 0 ? "Clear Sky" : "Other Weather Condition"}</p>
+    <div className="bg-white p-4 md:p-8 rounded-md shadow-md text-left w-full max-w-lg">
+      <h2 className="text-xl md:text-3xl font-semibold mb-4">Current Weather in {city.name}</h2>
+      <p className="font-inter text-4xl font-normal leading-tight">
+        {weatherData.temperature}°C
+      </p>
+      <p className="font-inter text-lg md:text-xl font-normal leading-tight">
+        {weatherData.weathercode === 0 ? "Clear Sky" : "Other Weather Condition"}
+      </p>
     </div>
   );
 }
