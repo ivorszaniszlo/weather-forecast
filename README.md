@@ -166,4 +166,4 @@ You can deploy this application using **Surge**:
 
 ## License <a id="license"></a>
 
-MIT License
+Copyright@ all rights reserved: Szaniszló Ivor

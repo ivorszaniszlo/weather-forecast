@@ -15,7 +15,7 @@ function CitySelector({ onSelectCity }) {
   };
 
   return (
-    <div className="bg-white p-4 shadow-md rounded-md">
+    <div className="bg-white p-4 shadow-md rounded-md w-full md:w-3/4 lg:w-1/2 mx-auto">
       <input
         type="text"
         value={query}
@@ -23,7 +23,7 @@ function CitySelector({ onSelectCity }) {
         placeholder="Enter city name"
         className="p-2 border border-gray-300 rounded w-full mb-4"
       />
-      <button onClick={searchCities} className="p-2 bg-blue-500 text-white rounded">
+      <button onClick={searchCities} className="p-2 bg-blue-500 text-white rounded w-full md:w-auto">
         Search
       </button>
       <ul className="mt-4">
@@ -42,3 +42,4 @@ function CitySelector({ onSelectCity }) {
 }
 
 export default CitySelector;
+
