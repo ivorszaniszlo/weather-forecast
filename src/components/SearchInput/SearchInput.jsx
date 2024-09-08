@@ -4,18 +4,19 @@ function SearchInput({ onSearch }) {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
- 
+    // Ha az input üres, akkor nem futtatjuk a keresést
     if (query.trim() === '') {
-      onSearch('');
+      onSearch(''); // Eltávolítjuk a városlistát
       return;
     }
 
-    // Debouncing
+    // Debounce logika beállítása
     const delayDebounceFn = setTimeout(() => {
       onSearch(query);
-    }, 300);
+    }, 500); // 500ms késleltetést adunk a lekérdezésre
 
-    return () => clearTimeout(delayDebounceFn); 
+    // Tisztítjuk a timeout-ot a cleanup fázisban, hogy elkerüljük a felesleges lekérdezéseket
+    return () => clearTimeout(delayDebounceFn);
   }, [query, onSearch]);
 
   return (

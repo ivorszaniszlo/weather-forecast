@@ -6,14 +6,14 @@ function CitySelector({ onSelectCity }) {
 
   const handleSearch = async (query) => {
     if (!query) {
-      setCities([]);
+      setCities([]); // Ha az input üres, nincs szükség új lekérdezésre
       return;
     }
 
     try {
       const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${query}`);
       const data = await response.json();
-      setCities(data.results || []);
+      setCities(data.results || []); // Frissítjük a találatokat
     } catch (error) {
       console.error('Failed to fetch city data:', error);
     }

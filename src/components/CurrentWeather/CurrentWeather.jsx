@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import { getWeatherDescription } from '../../helpers/getWeatherDescription'; // Import helper function
+import { fetchWeatherData } from '../../helpers/fetchWeatherData'; // Fetch helper
 
 const CurrentWeather = ({ city, onCityClick }) => {
   const [weatherData, setWeatherData] = useState(null);
 
   // Fetch weather data when the city changes
   useEffect(() => {
-    if (city) {
-      fetchWeatherData(city.latitude, city.longitude);
-    }
-  }, [city]);
+    if (!city) return;
 
-  // Function to fetch weather data from Open Meteo API
-  const fetchWeatherData = async (latitude, longitude) => {
-    try {
-      const response = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`
-      );
-      const data = await response.json();
-      setWeatherData(data.current_weather);
-    } catch (error) {
-      console.error("Error fetching weather data:", error);
-    }
-  };
+    const fetchWeather = async () => {
+      try {
+        const data = await fetchWeatherData(city.latitude, city.longitude);
+        setWeatherData(data.current_weather);
+      } catch (error) {
+        console.error("Error fetching weather data:", error);
+      }
+    };
+
+    fetchWeather();
+  }, [city]);
 
   // Show loading text while waiting for the weather data
   if (!weatherData) {
@@ -30,54 +28,28 @@ const CurrentWeather = ({ city, onCityClick }) => {
 
   return (
     <div className="current-weather-container flex flex-col items-center md:items-start">
-      {/* The city name is clickable and opens the modal */}
-      <p className="city-name cursor-pointer md:text-left text-center" onClick={onCityClick}>
-        {city.name}
-      </p>
+      {/* Tooltip wrapper for city name */}
+      <div className="relative group w-full flex flex-col items-center md:items-start">
+        {/* The city name is clickable and opens the modal */}
+        <p className="city-name cursor-pointer text-center md:text-left" onClick={onCityClick}>
+          {city.name}
+        </p>
+
+        {/* Tooltip that appears on hover */}
+        <div className="absolute bottom-full mb-2 hidden group-hover:block bg-gray-700 text-white text-xs rounded-md py-1 px-2 whitespace-pre-wrap text-center w-max max-w-xs">
+          Válassz települést!
+        </div>
+      </div>
+
       {/* Display the current temperature */}
-      <h1 className="temperature md:text-left text-center">{weatherData.temperature} °C</h1>
+      <h1 className="temperature text-center md:text-left mt-2">{weatherData.temperature} °C</h1>
+      
       {/* Display the weather description based on the weather code */}
-      <p className="weather-description md:text-left text-center">
+      <p className="weather-description text-center md:text-left mt-1">
         {getWeatherDescription(weatherData.weathercode)}
       </p>
     </div>
   );
-};
-
-// Mapping weather codes to Hungarian weather descriptions
-const getWeatherDescription = (weatherCode) => {
-  const weatherDescriptions = {
-    0: "Tiszta égbolt",
-    1: "Főként tiszta",
-    2: "Részben felhős",
-    3: "Borult",
-    45: "Köd",
-    48: "Ködös, zúzmarás",
-    51: "Szitálás: Enyhe intenzitás",
-    53: "Szitálás: Mérsékelt intenzitás",
-    55: "Szitálás: Sűrű",
-    56: "Fagyos szitálás: Enyhe intenzitás",
-    57: "Fagyos szitálás: Sűrű",
-    61: "Eső: Gyenge",
-    63: "Eső: Mérsékelt",
-    65: "Eső: Erős intenzitás",
-    66: "Fagyos eső: Enyhe intenzitás",
-    67: "Fagyos eső: Erős intenzitás",
-    71: "Havazás: Enyhe",
-    73: "Havazás: Mérsékelt",
-    75: "Havazás: Erős intenzitás",
-    77: "Hózápor",
-    80: "Zápor: Enyhe",
-    81: "Zápor: Mérsékelt",
-    82: "Zápor: Heves",
-    85: "Hózápor: Enyhe",
-    86: "Hózápor: Erős",
-    95: "Zivatar: Enyhe vagy mérsékelt",
-    96: "Zivatar enyhe jégesővel",
-    99: "Zivatar erős jégesővel",
-  };
-
-  return weatherDescriptions[weatherCode] || "Ismeretlen időjárás";
 };
 
 export default CurrentWeather;
