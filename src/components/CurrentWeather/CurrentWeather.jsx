@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
-const CurrentWeather = ({ city }) => {
+const CurrentWeather = ({ city, onCityClick }) => {
   const [weatherData, setWeatherData] = useState(null);
 
+  // Fetch weather data when the city changes
   useEffect(() => {
     if (city) {
       fetchWeatherData(city.latitude, city.longitude);
     }
   }, [city]);
 
+  // Function to fetch weather data from Open Meteo API
   const fetchWeatherData = async (latitude, longitude) => {
     try {
       const response = await fetch(
@@ -21,25 +23,26 @@ const CurrentWeather = ({ city }) => {
     }
   };
 
+  // Show loading text while waiting for the weather data
   if (!weatherData) {
     return <div>Loading weather...</div>;
   }
 
   return (
     <div className="current-weather-container">
-      {/* Város neve */}
-      <p className="city-name">{city.name}</p>
-
-      {/* Hőmérséklet adatok */}
+      {/* The city name is clickable and opens the modal */}
+      <p className="city-name cursor-pointer" onClick={onCityClick}>
+        {city.name}
+      </p>
+      {/* Display the current temperature */}
       <h1 className="temperature">{weatherData.temperature} °C</h1>
-
-      {/* Időjárás kód */}
+      {/* Display the weather description based on the weather code */}
       <p className="weather-description">{getWeatherDescription(weatherData.weathercode)}</p>
     </div>
   );
 };
 
-// Magyar fordítás az időjárás kódokhoz
+// Mapping weather codes to Hungarian weather descriptions
 const getWeatherDescription = (weatherCode) => {
   const weatherDescriptions = {
     0: "Tiszta égbolt",

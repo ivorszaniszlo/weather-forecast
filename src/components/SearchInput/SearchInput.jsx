@@ -23,7 +23,7 @@ function SearchInput({ onSearch }) {
       type="text"
       value={query}
       onChange={(e) => setQuery(e.target.value)}
-      placeholder="Enter city name"
+      placeholder="Település neve"
       className="p-2 border border-gray-300 rounded w-full mb-4 text-gray-900 bg-white focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all duration-300"
       style={{ fontSize: '12px', lineHeight: '14.52px' }}
     />

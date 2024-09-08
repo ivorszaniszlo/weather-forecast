@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
             opacity: 1,
           }}
         >
-          <p className="text-white">Jelentkező neve</p>
+          <p className="text-white">Ivor Szaniszló</p>
         </footer>
       </div>
     </div>

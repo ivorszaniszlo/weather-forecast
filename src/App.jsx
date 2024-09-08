@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Layout from './components/Layout/Layout';
 import CitySelector from './components/CitySelector/CitySelector';
 import Modal from './components/Modal/Modal';
-import SelectedCity from './components/SelectedCity/SelectedCity';
 import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 
 function App() {
@@ -14,7 +13,7 @@ function App() {
     if (storedCity) {
       setSelectedCity(JSON.parse(storedCity));
     } else {
-      setIsModalOpen(true);
+      setIsModalOpen(true); // Automatically open modal if no city is selected
     }
   }, []);
 
@@ -25,7 +24,7 @@ function App() {
   };
 
   const handleCityClick = () => {
-    setIsModalOpen(true);
+    setIsModalOpen(true); // Open modal on city name click
   };
 
   return (
@@ -35,12 +34,11 @@ function App() {
           className="text-center p-4 bg-gray-100 text-gray-900 rounded-md hover:bg-gray-200 transition-all duration-300 cursor-pointer"
           onClick={handleCityClick}
         >
-          <p className="text-lg md:text-xl font-semibold">Please select a city!</p>
+          <p className="text-lg md:text-xl font-semibold">Válassz egy települést!</p>
         </div>
       ) : (
         <div className="flex flex-col items-center">
-          <SelectedCity city={selectedCity} onCityClick={handleCityClick} />
-          <CurrentWeather city={selectedCity} />
+          <CurrentWeather city={selectedCity} onCityClick={handleCityClick} />
         </div>
       )}
 
