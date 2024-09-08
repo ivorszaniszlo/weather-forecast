@@ -34,12 +34,12 @@ function App() {
       {selectedCity ? (
         <div className="flex flex-col md:flex-row md:justify-between md:gap-16">
           {/* Current weather section */}
-          <div className="flex flex-col items-center md:items-start w-full md:w-1/3">
+          <div className="flex flex-col items-baseline md:items-start w-full md:w-1/3">
             <CurrentWeather city={selectedCity} onCityClick={handleCityClick} />
           </div>
 
           {/* Weather forecast section */}
-          <div className="flex flex-col items-center w-full md:w-2/3">
+          <div className="flex flex-col items-center w-full">
             <WeatherForecast city={selectedCity} />
           </div>
         </div>

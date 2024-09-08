@@ -103,13 +103,25 @@ button:focus-visible {
   @apply md:text-left; /* Center on mobile, left-align on larger screens */
 }
 
+@media (max-width: 768px) {
+  .city-name {
+    margin-left: 30px;
+  }
+}
+
 .temperature {
   font-family: 'Inter', sans-serif;
   font-size: 48px;
   font-weight: 400;
   line-height: 58.09px;
   text-align: center;
-  @apply md:text-left; /* Center on mobile, left-align on larger screens */
+  @apply md:text-left; 
+}
+
+@media (max-width: 768px) {
+  .temperature {
+    margin-left: 30px;
+  }
 }
 
 .weather-description {
@@ -117,20 +129,13 @@ button:focus-visible {
   font-size: 16px;
   font-weight: 400;
   line-height: 19.36px;
-  text-align: center;
-  @apply md:text-left; /* Center on mobile, left-align on larger screens */
 }
 
 .forecast-container {
   font-family: 'Inter', sans-serif;
-  gap: 8px; /* Gap between rows on mobile */
-  padding: 4px;
 }
 
 @media (min-width: 768px) {
-  .forecast-container {
-    gap: 12px; /* Larger gap between columns on desktop */
-  }
 
   .col-span-3 {
     margin-bottom: 8px; /* Reduced row spacing on desktop */
@@ -142,6 +147,7 @@ button:focus-visible {
   font-weight: 400;
   line-height: 14.52px;
 }
+
 
 img {
   width: 24px;
@@ -158,13 +164,6 @@ img.weather-icon {
 
 @media (min-width: 768px) {
   /* Increased padding and column spacing on desktop */
-  .forecast-container {
-    gap: 8px;
-  }
-
-  .forecast-container .grid {
-    gap: 16px; /* Larger column spacing on desktop */
-  }
 
   .col-span-4 {
     padding-left: 16px;
@@ -173,9 +172,6 @@ img.weather-icon {
 }
 
 @media (max-width: 767px) {
-  .forecast-container {
-    gap: 4px; /* Larger column spacing on mobile */
-  }
 
   img.weather-icon {
     width: 14px;
@@ -184,8 +180,8 @@ img.weather-icon {
 
   /* Smaller padding on mobile */
   .forecast-container {
-    padding: 0px;
-    margin: 20px 0;
+    padding: 10px;
+    margin: 20px;
   }
 
   /* Flexbox row with more space between columns on mobile */

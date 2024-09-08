@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import getWeatherIcon from '../../helpers/getWeatherIcon';
+import TemperatureChart from '../TemperatureChart/TemperatureChart';
 
 const WeatherForecast = ({ city }) => {
   const [forecastData, setForecastData] = useState(null);
@@ -27,8 +28,8 @@ const WeatherForecast = ({ city }) => {
   }
 
   return (
-    <div className="forecast-container grid grid-cols-3 gap-y-2 gap-x-4 md:gap-y-1 md:gap-x-12">
-      <p className="col-span-3 text-left text-sm font-inter font-normal mb-4">7 napos előrejelzés</p>
+    <div className="forecast-container">
+      <p className="col-span-3 text-left text-sm font-inter font-normal mb-4 pt-8">7 napos előrejelzés</p>
 
       {forecastData.time.map((day, index) => (
         <ForecastDay
@@ -40,18 +41,27 @@ const WeatherForecast = ({ city }) => {
           precipitation={Math.round(forecastData.precipitation_sum[index])} // Round precipitation value
         />
       ))}
+
+      {/* Temperature chart added here */}
+      <div className="col-span-3 mt-8">
+        <TemperatureChart
+          city={city}
+          maxTemperatures={forecastData.temperature_2m_max} // Pass the maximum temperatures for the chart
+          timeStamps={forecastData.time} // Pass the corresponding timestamps
+        />
+      </div>
     </div>
   );
 };
 
 const ForecastDay = ({ day, weatherCode, minTemp, maxTemp, precipitation }) => {
   return (
-    <div className="flex justify-between items-center col-span-12 md:col-span-3 mb-2 md:mb-1 md:gap-x-8">
-      <div className="w-1/3 md:w-1/12 text-left">
+    <div className="flex justify-between items-center col-span-2 md:col-span-2 mb-2 md:mb-1 md:gap-x-12">
+      <div className="w-1/2 md:w-1/2 text-left">
         <p className="text-lg font-inter">{new Date(day).toLocaleDateString('hu-HU', { weekday: 'long' })}</p>
       </div>
 
-      <div className="w-1/3 md:w-1/12 flex items-center">
+      <div className="w-1/2 md:w-1/2 flex items-center">
         <img
           src={getWeatherIcon(weatherCode, minTemp, precipitation)}
           alt="Weather Icon"
@@ -60,12 +70,11 @@ const ForecastDay = ({ day, weatherCode, minTemp, maxTemp, precipitation }) => {
         <p className="ml-2 text-lg">{Math.round(precipitation)}%</p>
       </div>
 
-      <div className="w-1/3 md:w-1/12 text-right">
+      <div className="w-1/2 md:w-1/2 text-right">
         <p className="temperature text-lg">{minTemp}°C / {maxTemp}°C</p>
       </div>
     </div>
   );
 };
-
 
 export default WeatherForecast;

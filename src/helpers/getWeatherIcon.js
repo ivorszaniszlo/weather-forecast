@@ -29,7 +29,7 @@ const getWeatherIcon = (weatherCode, minTemp, pop) => {
   };
 
   // Log the weather data to debug
-  console.log('WeatherCode:', weatherCode, 'MinTemp:', minTemp, 'POP:', pop);
+  //console.log('WeatherCode:', weatherCode, 'MinTemp:', minTemp, 'POP:', pop);
 
   // If precipitation probability (POP) is higher than 30%, use rain or snow icon
   if (pop >= 30) {
