@@ -34,6 +34,7 @@ This application uses the **Open Meteo API** to fetch weather data based on a se
 * Vite.js - Build tool
 * Tailwind CSS - Styling
 * Open Meteo API - Weather and geocoding API
+* Weatherbit API - Used for fetching weather icons based on weather codes and precipitation
 * Cypress - End-to-End testing framework for responsive design
 
 ## Setup & Start <a id="setup"></a>
@@ -107,6 +108,7 @@ Cypress is used for automated responsive testing. The tests simulate different s
 ## Directory Structure <a id="directory-structure"></a>
 
 ```plaintext
+
 /weather-forecast
 ├── cypress
 │   ├── e2e
@@ -128,10 +130,10 @@ Cypress is used for automated responsive testing. The tests simulate different s
 │   │   │   └── Layout.jsx
 │   │   ├── Modal
 │   │   │   └── Modal.jsx
-│   │   ├── SearchInput
-│   │   │   └── SearchInput.jsx
-│   │   ├── SelectedCity
-│   │   │   └── SelectedCity.jsx
+│   │   ├── WeatherForecast          # New component for 7-day forecast
+│   │   │   └── WeatherForecast.jsx
+│   ├── helpers                      # Helper for weather icons
+│   │   └── getWeatherIcon.js        # Weather icon logic based on conditions
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
@@ -143,6 +145,13 @@ Cypress is used for automated responsive testing. The tests simulate different s
 └── vite.config.js
 
 ```
+
+## Documentation <a id="documentation"></a>
+The project uses two APIs for its weather data and icons:
+
+Open Meteo API – For weather data and geocoding.
+Weatherbit API – For dynamic weather icons based on weather conditions and precipitation probability.
+The app's logic for displaying weather icons is based on a helper function located in src/helpers/getWeatherIcon.js. It takes weather codes, minimum temperature, and precipitation probability into account to display the most relevant weather icon.
 
 ## Deploy <a id="deploy"></a>
 
