@@ -3,6 +3,7 @@ import Layout from './components/Layout/Layout';
 import CitySelector from './components/CitySelector/CitySelector';
 import Modal from './components/Modal/Modal';
 import CurrentWeather from './components/CurrentWeather/CurrentWeather';
+import WeatherForecast from './components/WeatherForecast/WeatherForecast';
 
 function App() {
   const [selectedCity, setSelectedCity] = useState(null);
@@ -13,7 +14,7 @@ function App() {
     if (storedCity) {
       setSelectedCity(JSON.parse(storedCity));
     } else {
-      setIsModalOpen(true); // Automatically open modal if no city is selected
+      setIsModalOpen(true);
     }
   }, []);
 
@@ -24,7 +25,7 @@ function App() {
   };
 
   const handleCityClick = () => {
-    setIsModalOpen(true); // Open modal on city name click
+    setIsModalOpen(true);
   };
 
   return (
@@ -37,8 +38,16 @@ function App() {
           <p className="text-lg md:text-xl font-semibold">Válassz egy települést!</p>
         </div>
       ) : (
-        <div className="flex flex-col items-center">
-          <CurrentWeather city={selectedCity} onCityClick={handleCityClick} />
+        <div className="flex flex-col md:flex-row md:justify-between md:gap-16"> {/* Nagyobb oszlopok közötti távolság */}
+          {/* Flex item for current weather */}
+          <div className="flex flex-col items-center md:items-start w-full md:w-1/3">
+            <CurrentWeather city={selectedCity} onCityClick={handleCityClick} />
+          </div>
+
+          {/* Flex item for weather forecast */}
+          <div className="flex flex-col items-center w-full md:w-2/3">
+            <WeatherForecast city={selectedCity} />
+          </div>
         </div>
       )}
 

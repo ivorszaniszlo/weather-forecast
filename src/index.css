@@ -82,10 +82,10 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
 .current-weather-container {
-  @apply flex flex-col items-center justify-center; /* Középre igazítva mobil nézetben */
-  @apply md:items-start md:justify-start; /* Desktop nézetben balra igazítva */
-  @apply md:absolute md:top-[125px] md:left-[286px]; /* Desktop pozíció */
+  @apply flex flex-col items-center md:items-start; /* Vertikálisan igazítva, de desktopon balra igazítva */
+  @apply md:flex-row md:items-start md:justify-start; /* Left-align in larger screens */
   @apply text-white;
 }
 
@@ -95,7 +95,7 @@ button:focus-visible {
   font-weight: 400;
   line-height: 14.52px;
   text-align: center;
-  @apply md:text-left; /* Mobilon középre igazítva, desktopon balra */
+  @apply md:text-left; /* Center on mobile, left-align on larger screens */
 }
 
 .temperature {
@@ -104,7 +104,7 @@ button:focus-visible {
   font-weight: 400;
   line-height: 58.09px;
   text-align: center;
-  @apply md:text-left; /* Mobilon középre igazítva, desktopon balra */
+  @apply md:text-left; /* Center on mobile, left-align on larger screens */
 }
 
 .weather-description {
@@ -113,5 +113,79 @@ button:focus-visible {
   font-weight: 400;
   line-height: 19.36px;
   text-align: center;
-  @apply md:text-left; /* Mobilon középre igazítva, desktopon balra */
+  @apply md:text-left; /* Center on mobile, left-align on larger screens */
+}
+
+
+.forecast-container {
+  font-family: 'Inter', sans-serif;
+  gap: 8px; /* Sortávolság mobilon */
+  padding: 4px;
+}
+
+@media (min-width: 768px) {
+  .forecast-container {
+    gap: 12px; /* Nagyobb oszloptávolság desktopon */
+  }
+
+  .col-span-3 {
+    margin-bottom: 8px; /* Kisebb sortávolság desktopon */
+  }
+}
+
+.forecast-container p {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+}
+
+img {
+  width: 24px;
+  height: 24px;
+}
+
+img.weather-icon {
+  filter: brightness(0) invert(1); /* Ikonok fekete-fehér konvertálása */
+}
+
+.temperature {
+  white-space: nowrap; /* Min és Max hőmérséklet egy sorban jelenik meg */
+}
+
+@media (min-width: 768px) {
+  /* Desktopon nagyobb padding és oszloptávolság */
+  .forecast-container {
+    gap: 8px;
+  }
+
+  .forecast-container .grid {
+    gap: 16px; /* Nagyobb oszloptávolság desktopon */
+  }
+
+  .col-span-4 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .forecast-container {
+    gap: 4px; /* Mobilon nagyobb oszloptávolság */
+  }
+
+  img.weather-icon {
+    width: 14px;
+    height: 12px; /* Kisebb ikonméret mobil nézetben */
+  }
+
+  /* Mobilon kisebb padding */
+  .forecast-container {
+    padding: 0px;
+    margin: 20px 0;
+  }
+
+  /* Mobil nézetben oszlopok között nagyobb távolság flexbox-szal */
+  .forecast-row {
+    @apply flex justify-between items-center mb-4; /* Több távolság az oszlopok között */
+  }
 }

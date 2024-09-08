@@ -29,15 +29,17 @@ const CurrentWeather = ({ city, onCityClick }) => {
   }
 
   return (
-    <div className="current-weather-container">
+    <div className="current-weather-container flex flex-col items-center md:items-start">
       {/* The city name is clickable and opens the modal */}
-      <p className="city-name cursor-pointer" onClick={onCityClick}>
+      <p className="city-name cursor-pointer md:text-left text-center" onClick={onCityClick}>
         {city.name}
       </p>
       {/* Display the current temperature */}
-      <h1 className="temperature">{weatherData.temperature} °C</h1>
+      <h1 className="temperature md:text-left text-center">{weatherData.temperature} °C</h1>
       {/* Display the weather description based on the weather code */}
-      <p className="weather-description">{getWeatherDescription(weatherData.weathercode)}</p>
+      <p className="weather-description md:text-left text-center">
+        {getWeatherDescription(weatherData.weathercode)}
+      </p>
     </div>
   );
 };
