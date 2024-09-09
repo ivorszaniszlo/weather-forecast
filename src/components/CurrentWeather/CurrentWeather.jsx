@@ -27,28 +27,29 @@ const CurrentWeather = ({ city, onCityClick }) => {
   }
 
   return (
-    <div className="current-weather-container pt-8 flex flex-col items-start">
-      {/* Tooltip wrapper for city name */}
-      <div className="relative group w-full flex flex-col items-start">
-        {/* The city name is clickable and opens the modal */}
-        <p className="city-name cursor-pointer items-baseline" onClick={onCityClick}>
-          {city.name}
-        </p>
+    <div className="current-weather-container pt-8">
+  {/* Tooltip wrapper for city name */}
+  <div className="relative group w-full">
+    {/* The city name is clickable and opens the modal */}
+    <p className="city-name cursor-pointer text-left" onClick={onCityClick}>
+      {city.name}
+    </p>
 
-        {/* Tooltip that appears on hover */}
-        <div className="absolute bottom-full mb-2 hidden group-hover:block bg-gray-700 text-white text-xs rounded-md py-1 px-2 whitespace-pre-wrap text-left w-max max-w-xs">
-          Válassz települést!
-        </div>
-      </div>
-
-      {/* Display the current temperature */}
-      <h2 className="temperature flex flex-col items-start mt-2">{weatherData.temperature} °C</h2>
-      
-      {/* Display the weather description based on the weather code */}
-      <p className="weather-description flex flex-col items-start mt-1">
-        {getWeatherDescription(weatherData.weathercode)}
-      </p>
+    {/* Tooltip that appears on hover */}
+    <div className="absolute bottom-full mb-2 hidden group-hover:block bg-gray-700 text-white text-xs rounded-md py-1 px-2 whitespace-pre-wrap text-left w-max max-w-xs">
+      Válassz települést!
     </div>
+  </div>
+
+  {/* Display the current temperature */}
+  <h2 className="temperature text-left mt-2">{weatherData.temperature} °C</h2>
+  
+  {/* Display the weather description based on the weather code */}
+  <p className="weather-description text-left mt-1">
+    {getWeatherDescription(weatherData.weathercode)}
+  </p>
+</div>
+
   );
 };
 
