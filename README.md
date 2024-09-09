@@ -36,6 +36,7 @@ This application uses the **Open Meteo API** to fetch weather data based on a se
 * Open Meteo API - Weather and geocoding API
 * Weatherbit API - Used for fetching weather icons based on weather codes and precipitation
 * Cypress - End-to-End testing framework for responsive design
+* **Chart.js** - Used for rendering the temperature trend chart
 
 ## Setup & Start <a id="setup"></a>
 
@@ -108,7 +109,6 @@ Cypress is used for automated responsive testing. The tests simulate different s
 ## Directory Structure <a id="directory-structure"></a>
 
 ```plaintext
-
 /weather-forecast
 ├── cypress
 │   ├── e2e
@@ -130,10 +130,17 @@ Cypress is used for automated responsive testing. The tests simulate different s
 │   │   │   └── Layout.jsx
 │   │   ├── Modal
 │   │   │   └── Modal.jsx
-│   │   ├── WeatherForecast          # New component for 7-day forecast
+│   │   ├── SearchInput              
+│   │   │   └── SearchInput.jsx
+│   │   ├── TemperatureChart         
+│   │   │   └── TemperatureChart.jsx
+│   │   ├── WeatherForecast
 │   │   │   └── WeatherForecast.jsx
-│   ├── helpers                      # Helper for weather icons
-│   │   └── getWeatherIcon.js        # Weather icon logic based on conditions
+│   ├── helpers                      # Helpers for weather-related data and storage
+│   │   ├── fetchWeatherData.js      # Fetch weather data from Open Meteo API
+│   │   ├── getWeatherDescription.js # Get weather descriptions based on weather codes
+│   │   ├── getWeatherIcon.js        # Get weather icon based on weather conditions
+│   │   └── storageHelper.js         # Local storage helper for managing city data
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
